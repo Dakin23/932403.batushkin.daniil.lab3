@@ -35,6 +35,45 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+nav {
+    background-color: var(--color-accent);
+    padding: 10px 15px;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 4px 8px;
+}
+
+.menu a:visited {
+    color: #d9e8f7;
+}
+
+.menu a:hover {
+    color: #a8c8e8;
+    text-decoration: underline;
+}
+
+.menu a:active {
+    color: #ffffff;
+    background-color: #004488;
+}
+
+.menu a:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
 .wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -59,16 +98,6 @@ aside {
     border: 1px solid rgba(0, 34, 68, 0.3);
 }
 
-@media (max-width: 768px) {
-    .wrapper {
-        flex-direction: column;
-    }
-    main,
-    aside {
-        width: 100%;
-    }
-}
-
 .hypotheses {
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +105,7 @@ aside {
 }
 
 .hypothesis-card {
-    flex-basis: 100%;
+    flex-basis: calc(33.333% - 10px);
     background: white;
     border: 1px solid var(--color-accent);
     padding: 15px;
@@ -108,7 +137,7 @@ aside {
 
 .methods-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
@@ -138,22 +167,28 @@ aside {
     font-size: 0.9em;
 }
 
-@media (min-width: 700px) {
-    .hypothesis-card {
-        flex-basis: calc(50% - 8px);
-    }
-    .methods-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
-@media (min-width: 1100px) {
-    .hypothesis-card {
-        flex-basis: calc(33.333% - 10px);
-    }
-    .methods-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.stat {
+    background: white;
+    border: 1px solid var(--color-accent);
+    padding: 15px;
+    text-align: center;
+}
+
+.stat .num {
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.stat p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
 }
 
 .project-item {
@@ -233,4 +268,42 @@ footer {
     text-align: center;
     padding: 10px;
     margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .hypothesis-card {
+        flex-basis: calc(50% - 8px);
+    }
+    .methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    main,
+    aside {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .hypothesis-card {
+        flex-basis: 100%;
+    }
+    .methods-grid {
+        grid-template-columns: 1fr;
+    }
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
 }
